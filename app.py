@@ -5,11 +5,13 @@ from datetime import datetime
 import time
 from posthog import Posthog
 
-# Initialize PostHog for analytics
 posthog = Posthog(
-    api_key=st.secrets["phc_DEdvtvEogPFb9Vs7nC5ehZlmKxWGMFsJPjEQ9Y9wlfv"],
-    host="https://app.posthog.com"
+  project_api_key='phc_DEdvtvEogPFb9Vs7nC5ehZlmKxWGMFsJPjEQ9Y9wlfv',
+  host='https://eu.i.posthog.com'
 )
+
+# Track app initialization
+posthog.capture("user_signed_up", properties={"example_property": "with_some_value"})
 
 st.set_page_config(page_title="Growth Stock Screener", page_icon="📈", layout="wide")
 
